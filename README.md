@@ -1,2 +1,9 @@
-# animal-crossing-spot-trading-system
-动物森友会大宗商品交易盘外撮合系统
+# Animal Crossing Spot Trading System
+
+## What's This?
+
+## The Analysis for Animal Crossing Economics System
+
+## How to?
+
+## Contributing
