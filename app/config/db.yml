@@ -1,0 +1,14 @@
+development:
+  adapter: postgres
+  host: db
+  database: postgres
+  user: postgres
+  password: postgres
+
+test:
+  adapter: postgres
+  host: localhost
+  database: travis_ci_test
+  user: postgres
+
+production: <%= ENV['DATABASE_URL'] %>

@@ -1,0 +1,46 @@
+version: '3'
+services:
+  db:
+    image: postgres:10-alpine
+    restart: always
+    volumes:
+      - ./.persistence/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgres
+
+  redis:
+    image: redis:5-alpine
+    restart: always
+
+  dashboard:
+    build: ./dashboard
+    restart: always
+    volumes:
+      - ./dashboard:/app
+    depends_on:
+      - web
+    ports:
+      - 127.0.0.1:8080:8080
+
+  web:
+    build: .
+    restart: always
+    volumes:
+      - .:/app
+    ports:
+      - 127.0.0.1:9292:9292
+    depends_on:
+      - db
+      - redis
+    environment:
+      RACK_ENV: development
+
+  nginx:
+    image: nginx:mainline-alpine
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - web
+      - dashboard
+    ports:
+      - 127.0.0.1:8001:8001

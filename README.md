@@ -1,9 +1,3 @@
-# Animal Crossing Spot Trading System
+# Sinatra Template
 
-## What's This?
-
-## The Analysis for Animal Crossing Economics System
-
-## How to?
-
-## Contributing
+Yet Another Sintra Template for sinatra + sequel + vue.js + ohm + sidekiq + heroku deployment.
