@@ -23,6 +23,15 @@ class Route < Sinatra::Base
     end
   end
 
+  before do
+    # Parse token
+    @user = nil
+    unless request.env['Token'].nil?
+      token = Token.find(token: request.env['Token'])
+      @user = token&.user
+    end
+  end
+
   namespace '/api', &ROOT_ROUTE
 
   error 500 do |error|
